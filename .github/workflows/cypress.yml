@@ -7,7 +7,7 @@ jobs:
       - name: backend-checkout
         uses: actions/checkout@v2
         with:
-          repository: git@github.com:GeodesicCarbon/Mnemosyne.git
+          repository: GeodesicCarbon/Mnemosyne
           path: server
       - name: Use Node.js
         uses: actions/setup-node@v1

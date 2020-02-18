@@ -4,30 +4,23 @@ jobs:
   cypress-run:
     runs-on: ubuntu-16.04
     steps:
-      - name: backend-checkout
+      - name: frontend checkout
         uses: actions/checkout@v2
-        with:
-          repository: GeodesicCarbon/Mnemosyne
-          path: server
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-      - name: npm install
-        working-directory: ./server
-        run: |
-          npm ci
-        env:
-          PORT: 3003
-          CI: true
-          CI_MONGODB_URI: ${{ secrets.CI_MONGODB_URI }}
-      - name: checkout
-        uses: actions/checkout@v2
-      - run: pwd
-      - run: ls -la
       - uses: bahmutov/npm-install@v1
         env:
           CYPRESS_INSTALL_BINARY: 0
       - run: npx cypress cache path
       - run: npx cypress cache list
+      - name: backend-checkout
+        uses: actions/checkout@v2
+        with:
+          repository: GeodesicCarbon/Mnemosyne
+          path: server
+      - name: backend Use Node.js
+        uses: actions/setup-node@v1
+      - name: backend npm install
+        working-directory: ./server
+        run: npm ci
       - name: Cache Cypress
         id: cache-cypress
         uses: actions/cache@v1

@@ -21,6 +21,8 @@ jobs:
           CI_MONGODB_URI: ${{ secrets.CI_MONGODB_URI }}
       - name: checkout
         uses: actions/checkout@v2
+      - run: pwd
+      - run: ls -la
       - uses: bahmutov/npm-install@v1
         env:
           CYPRESS_INSTALL_BINARY: 0

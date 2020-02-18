@@ -32,6 +32,6 @@ jobs:
       - run: ls -la
       - run: npm run cypress:ci_test
         env:
-          PORT: 3003
+          BACKEND_PORT: 3003
           CI: true
           CI_MONGODB_URI: ${{ secrets.CI_MONGODB_URI }}

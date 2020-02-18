@@ -22,10 +22,10 @@
     "eject": "react-scripts eject",
     "ci:server": "cd ./server && npm run start",
     "ci:react": "npm start",
-    "cypress:ci": "ci:server && ci:react",
+    "cypress:ci": "npm run ci:server & npm run ci:react",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:test": "start-server-and-test cypress:test http://localhost:3000 cypress:run",
+    "cypress:ci_test": "start-server-and-test cypress:ci http://localhost:3000 cypress:run",
     "cypress:debug": "DEBUG=cypress:* cypress open"
   },
   "eslintConfig": {

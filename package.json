@@ -25,7 +25,7 @@
     "cypress:ci": "ci:server && ci:react",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:test": "start-server-and-test cypress:test http://localhost:3000 cypress:run"
+    "cypress:test": "start-server-and-test cypress:test http://localhost:3000 cypress:run",
     "cypress:debug": "DEBUG=cypress:* cypress open"
   },
   "eslintConfig": {

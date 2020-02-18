@@ -21,11 +21,20 @@ jobs:
           CI_MONGODB_URI: ${{ secrets.CI_MONGODB_URI }}
       - name: checkout
         uses: actions/checkout@v2
-      - name: Cypress run
-        uses: cypress-io/github-action@v1
+      - uses: bahmutov/npm-install@v1
+        env:
+          CYPRESS_INSTALL_BINARY: 0
+      - run: npx cypress cache path
+      - run: npx cypress cache list
+      - name: Cache Cypress
+        id: cache-cypress
+        uses: actions/cache@v1
         with:
-          start: cypress:ci
-          wait-on: http://localhost:3000
+          path: ~/.cache/Cypress
+          key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+      - run: npx cypress install
+      - run: npx cypress cache list
+      - run: npm run cypress:test
         env:
           PORT: 3003
           CI: true
